@@ -17,9 +17,9 @@ let speed = 0.8;
 let intervalTime = 0;
 let interval = 0;
 
-// when HTML is loaded, sets an eventListener to check for keyboard inputs
+// when HTML is loaded, creates the board and starts the game
 document.addEventListener("DOMContentLoaded", function () {
-  // document.addEventListener("keyup", control);
+  // document.addEventListener("keyup", control); // Not working
   createBoard();
   startGame();
   playAgain.addEventListener("click", replay);
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //   }
 // }
 
-// creates 10 x 10 grid gameBoard, 100 grid board
+// creates 10 x 10 grid gameBoard
 function createBoard() {
   popup.style.display = "none";
   for (let i = 0; i < 100; i++) {
@@ -48,7 +48,7 @@ function createBoard() {
   }
 }
 
-// starts game and sets initial game settings
+// starts game and sets initial game settings like snake size, position, and speed
 function startGame() {
   let squares = document.querySelectorAll(".grid div");
   randomApple(squares);
@@ -122,7 +122,7 @@ function randomApple(squares) {
   squares[appleIndex].classList.add("apple");
 }
 
-// keyboard functionality for arrow keys
+// keyboard functionality for arrow keys (Not working)
 // function control(e) {
 //   if (e.keycode === 39) {
 //     direction = 1; // right
@@ -149,7 +149,7 @@ document.onkeydown = (e) => {
   }
 }
 
-// mobile functionality
+// mobile functionality (Not Tested)
 up.addEventListener("click", () => (direction = -width));
 bottom.addEventListener("click", () => (direction = +width));
 left.addEventListener("click", () => (direction = -1));
