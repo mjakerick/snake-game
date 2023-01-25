@@ -14,6 +14,7 @@ body {
 .grid div {
   width: 20px;
   height: 20px;
+  /* Shows individual grid lines */
   /* border:1px black solid;
   box-sizing:border-box */
 }
