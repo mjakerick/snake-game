@@ -19,7 +19,7 @@ let interval = 0;
 
 // when HTML is loaded, sets an eventListener to check for keyboard inputs
 document.addEventListener("DOMContentLoaded", function () {
-  document.addEventListener("onkeydown", control);
+  // document.addEventListener("keyup", control);
   createBoard();
   startGame();
   playAgain.addEventListener("click", replay);
@@ -123,15 +123,29 @@ function randomApple(squares) {
 }
 
 // keyboard functionality for arrow keys
-function control(e) {
-  if (e.keycode === 39) {
-    direction = 1; // right
-  } else if (e.keycode === 38) {
-    direction = -width; //if we press the up arrow, the snake will go ten divs up
-  } else if (e.keycode === 37) {
-    direction = -1; // left, the snake will go left one div
-  } else if (e.keycode === 40) {
-    direction = +width; // down the snake head will instantly appear 10 divs below from the current div
+// function control(e) {
+//   if (e.keycode === 39) {
+//     direction = 1; // right
+//   } else if (e.keycode === 38) {
+//     direction = -width; //if we press the up arrow, the snake will go ten divs up
+//   } else if (e.keycode === 37) {
+//     direction = -1; // left, the snake will go left one div
+//   } else if (e.keycode === 40) {
+//     direction = +width; // down the snake head will instantly appear 10 divs below from the current div
+//   }
+// }
+
+// substitute for original keyboard input
+document.onkeydown = (e) => {
+  e = e || window.event;
+  if (e.keyCode === 38) {
+    direction = -width;
+  } else if (e.keyCode === 40) {
+    direction = +width;
+  } else if (e.keyCode === 37) {
+    direction = -1;
+  } else if (e.keyCode === 39) {
+    direction = 1;
   }
 }
 
@@ -148,23 +162,3 @@ function replay() {
   startGame();
   popup.style.display = "none";
 }
-
-// document.onkeydown = (e) => {
-//   e = e || window.event;
-//   if (e.keyCode === 38) {
-//     console.log('up arrow pressed')
-//   } else if (e.keyCode === 40) {
-//     console.log('down arrow pressed')
-//   } else if (e.keyCode === 37) {
-//     console.log('left arrow pressed')
-//   } else if (e.keyCode === 39) {
-//     console.log('right arrow pressed')
-//   }
-// }
-
-// document.addEventListener("DOMContentLoaded", function () {
-//   document.addEventListener("keyup", control);
-//   createBoard();
-//   startGame();
-//   playAgain.addEventListener("click", replay);
-// });
